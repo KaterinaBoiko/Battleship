@@ -21,12 +21,6 @@ namespace Battleship.Classes
 
             GenerateBoard(size);
         }
-
-        private bool IsShipValid(IShip ship)
-        {
-            return true;
-        }
-
         private void GenerateBoard(int size)
         {
             for (int x = 0; x < size; x++)
@@ -36,12 +30,11 @@ namespace Battleship.Classes
 
         public void AddShip(IShip ship)
         {
-            if (IsShipValid(ship))
-                _ships.Add(ship);
-            else
-                throw new ArgumentException(nameof(ship));
+            _ships.Add(ship);
 
-            foreach(ICell shipCell in ship.Cells)
+            var shipCells = GetCellsInDirection(ship.FirstCell, ship.DeckNumber, ship.Direction);
+
+            foreach(ICell shipCell in shipCells)
             {
                 foreach (ICell boardCell in _cells)
                 {
@@ -56,11 +49,8 @@ namespace Battleship.Classes
         {
             _ships.Remove(ship);
         }
-        //public void HitTheCell(ICell cell) => _ships.ForEach(x => x.UpdateStatus(cell));
         public void HitTheCell(ICell cell)
         {
-            _ships.ForEach(x => x.UpdateStatus(cell));//??
-
             foreach (ICell c in _cells)
             {
                 if (c.Position.Equals(cell.Position))
@@ -73,7 +63,6 @@ namespace Battleship.Classes
             }
 
         }
-
         public ICell FindCell(Position position) => _cells.SingleOrDefault(x => x.Position.Equals(position));
 
         public List<ICell> GetCellsOnFire() => _cells.FindAll(x => x.State==State.OnFire);
@@ -85,17 +74,17 @@ namespace Battleship.Classes
             if (startCell.Position.X + numberOfCells > Size || startCell.Position.Y + numberOfCells > Size)
                 throw new InvalidOperationException($"Board is too small; {Size}");
 
-            var result = new List<ICell>();
-            for(int i = 0; i < numberOfCells; i++)
+            var result = new List<ICell>() { FindCell(startCell.Position) };
+            Position nextPosition = startCell.Position;
+            for (int i = 0; i < numberOfCells - 1; i++)
             {
-                Position nextPosition = null;
                 switch (directions)
                 {
                     case Directions.Horizontally:
-                        nextPosition = Position.New(startCell.Position.X + 1, startCell.Position.Y);
+                        nextPosition = Position.New(nextPosition.X + 1, nextPosition.Y);
                         break;
                     case Directions.Vertivally:
-                        nextPosition = Position.New(startCell.Position.X, startCell.Position.Y + 1);
+                        nextPosition = Position.New(nextPosition.X, nextPosition.Y + 1);
                         break;
                 }
                 result.Add(FindCell(nextPosition));

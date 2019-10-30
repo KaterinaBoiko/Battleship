@@ -29,7 +29,7 @@ namespace Battleship.Abstracts
         protected void BuildShip(int numberOfDecks, Position position, Directions shipDirection)
         {
            var ship = Ship.New(numberOfDecks,
-                _board.GetCellsInDirection(_board.FindCell(position), numberOfDecks, shipDirection),
+                _board.FindCell(position),
                 shipDirection);
 
             _board.AddShip(ship);

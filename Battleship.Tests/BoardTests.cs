@@ -55,11 +55,11 @@ namespace Battleship.Tests
             //act
             var size = 8;
             var deckNumber = 2;
-            var cells = new List<ICell>();
+            var fcell = Cell.New(Position.New(0, 0));
             var direction = Directions.Horizontally;
 
             // act
-            var ship = new Ship(deckNumber, cells, direction);
+            var ship = new Ship(deckNumber, fcell, direction);
             var sut = new Board(size);
             sut.AddShip(ship);
 
@@ -73,12 +73,12 @@ namespace Battleship.Tests
             //act
             var size = 8;
             var deckNumber = 2;
-            var cells = new List<ICell>();
+            var fcell = Cell.New(Position.New(0, 0));
             var direction = Directions.Horizontally;
 
             // act
-            var ship1 = new Ship(deckNumber, cells, direction);
-            var ship2 = new Ship(deckNumber, cells, direction);
+            var ship1 = new Ship(deckNumber, fcell, direction);
+            var ship2 = new Ship(deckNumber, fcell, direction);
             var sut = new Board(size);
             sut.AddShip(ship1);
             sut.AddShip(ship2);
@@ -96,16 +96,76 @@ namespace Battleship.Tests
             var deckNumber = 2;
             var direction = Directions.Horizontally;
             var cell = Cell.New(Position.New(0, 0));
-            var cells = new List<ICell>() { cell };
 
             // act
-            var ship = new Ship(deckNumber, cells, direction);
+            var ship = new Ship(deckNumber, cell, direction);
             var board = new Board(size);
             board.AddShip(ship);
             board.HitTheCell(cell);
 
             //assert
             Assert.AreEqual(board._cells[0].State, State.OnFire);
+        }
+
+        [TestMethod]
+        public void FindCell_FindCell01_CellStatusBusy()
+        {
+            //act
+            var size = 8;
+            var deckNumber = 2;
+            var direction = Directions.Horizontally;
+            var cell = Cell.New(Position.New(0, 1));
+
+            // act
+            var ship = new Ship(deckNumber, cell, direction);
+            var board = new Board(size);
+            board.AddShip(ship);
+
+            //assert
+            Assert.AreEqual(board.FindCell(cell.Position).State, State.Busy);
+        }
+
+        [TestMethod]
+        public void GetCellsOnFire_FindAllCellsOnFire_AllFoundCellStatesIsOnFire()
+        {
+            //act
+            var size = 8;
+            var cell1 = Cell.New(Position.New(0, 1));
+            var cell2 = Cell.New(Position.New(1, 2));
+
+            // act
+            var board = new Board(size);
+            board.FindCell(cell1.Position).SetState(State.OnFire);
+            board.FindCell(cell2.Position).SetState(State.OnFire);
+
+            //assert
+            foreach (ICell cell in board.GetCellsOnFire())
+            {
+                Assert.AreEqual(cell.State, State.OnFire);
+            }
+        }
+
+        [TestMethod]
+        public void GetCellsInDirection_FindAllCellsInDirection_AllCellInDirectionIsCorrect()
+        {
+            //act
+            var size = 8;
+            var deckNumber = 3;
+            var direction = Directions.Horizontally;
+            var cell = Cell.New(Position.New(0, 0));
+            int x = 0;
+
+            // act
+            var ship = new Ship(deckNumber, cell, direction);
+            var board = new Board(size);
+            board.AddShip(ship);
+
+            //assert
+            foreach (ICell c in board.GetCellsInDirection(cell, deckNumber, direction))
+            {
+                Assert.AreEqual(c.Position, Position.New(x, 0));
+                x++;
+            }
         }
 
     }

@@ -5,9 +5,9 @@ namespace Battleship.Interfaces
 {
     public interface IShip
     {
-        IEnumerable<ICell> Cells { get; }
+        //IEnumerable<ICell> Cells { get; }
+        ICell FirstCell { get; }
         Directions Direction { get; }
         int DeckNumber { get; }
-        void UpdateStatus(ICell cell);
     }
 }
