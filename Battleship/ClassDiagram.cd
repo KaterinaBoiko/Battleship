@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Battleship.Classes.Board" Collapsed="true">
+    <Position X="5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAAAAQIgAABAAAQAAIAAAAAAAAIAAAAAECAAAA=</HashCode>
+      <FileName>Classes\Board.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleship.Classes.Bot" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAADAAAAA=</HashCode>
+      <FileName>Classes\Bot.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleship.Classes.Cell" Collapsed="true">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAACAggAAAAAAAAAAAAIAAAAAABAAAAAA=</HashCode>
+      <FileName>Classes\Cell.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleship.Classes.User" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAADAAAAA=</HashCode>
+      <FileName>Classes\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleship.Classes.Ship" Collapsed="true">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAgAAACAAACIAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Classes\Ship.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleship.Abstracts.BoardBuilder" Collapsed="true">
+    <Position X="7" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Abstracts\BoardBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Battleship.Classes.DefaultBuilder" Collapsed="true">
+    <Position X="7" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Classes\DefaultBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Battleship.Classes.Strategy.NoPaddedCellStrategy" Collapsed="true">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Strategy\NoPaddedCellStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleship.Classes.Strategy.OnePaddedCellStrategy" Collapsed="true">
+    <Position X="4.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Strategy\OnePaddedCellStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleship.Classes.Strategy.SeveralPaddedCellStrategy" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Strategy\SeveralPaddedCellStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleship.Classes.Strategy.StrategyForUser" Collapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Strategy\StrategyForUser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleship.Values.Position" Collapsed="true">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAgAAAAAAAAAAAAIAAAAAAAAAAYAA=</HashCode>
+      <FileName>Values\Position.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Battleship.Classes.Game" Collapsed="true">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAJAAAQAAAAAAQAAAAA=</HashCode>
+      <FileName>Classes\Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Bot" />
+      <Property Name="Player" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="Battleship.Interfaces.IBoard" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAAAAQAgAABAAAQAAIAAAAAAAAIAAAAAACAAAA=</HashCode>
+      <FileName>Interfaces\IBoard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="_cells" />
+      <Property Name="_ships" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="Battleship.Interfaces.IPlayer" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAADAAAAA=</HashCode>
+      <FileName>Interfaces\IPlayer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Board" />
+      <Property Name="Strategy" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="Battleship.Interfaces.IStrikeStrategy" Collapsed="true">
+    <Position X="1.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IStrikeStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Battleship.Interfaces.IShip" Collapsed="true">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAgAAAAAAACIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IShip.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Cells" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="Battleship.Interfaces.ICell" Collapsed="true">
+    <Position X="9.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Interfaces\ICell.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Position" />
+    </ShowAsAssociation>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
