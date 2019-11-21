@@ -6,6 +6,7 @@ namespace Battleship.Interfaces
     {
         IStrikeStrategy Strategy { get; }
         IBoard Board { get; }
-        void Strike(params ICell[] cells);
+        void Strike(IBoard opponentBoard, params ICell[] cells);
+        bool Lose();
     }
 }

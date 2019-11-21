@@ -3,6 +3,6 @@
     public enum Directions
     {
         Horizontally,
-        Vertivally
+        Vertically
     }
  }

@@ -20,5 +20,6 @@ namespace Battleship.Classes
                 instance = new Game(player, bot);
             return instance;
         }
+
     }
 }

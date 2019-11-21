@@ -2,6 +2,6 @@
 {
     public interface IStrikeStrategy
     {
-        void StrikeCell(IBoard board, params ICell[] cells);
+        void StrikeCell(IPlayer player, IBoard board, params ICell[] cells);
     }
 }

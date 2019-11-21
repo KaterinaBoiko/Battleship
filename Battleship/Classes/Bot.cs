@@ -14,6 +14,15 @@ namespace Battleship.Classes
             Board = builder.CreateBoard();
             Strategy = new NoPaddedCellStrategy();
         }
-        public void Strike(params ICell[] cells) => Strategy.StrikeCell(Board);
+        public void Strike(IBoard opponentBoard, params ICell[] cells) => Strategy.StrikeCell(this, opponentBoard);
+        public void ChangeStrategy(IStrikeStrategy str)
+        {
+            Strategy = str;
+        }
+        public bool Lose()
+        {
+            if (Board.SunkenCells == 20) return true;
+            return false;
+        }
     }
 }

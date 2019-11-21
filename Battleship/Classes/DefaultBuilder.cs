@@ -2,6 +2,7 @@
 using Battleship.Enums;
 using Battleship.Interfaces;
 using Battleship.Values;
+using System;
 
 namespace Battleship.Classes
 {
@@ -11,23 +12,27 @@ namespace Battleship.Classes
         public DefaultBuilder()
            : base(defaultSize)
         { }
-        //one method!!
-        //public override void AddFourDeckShip(Position position, Directions shipDirection) => BuildShip(4, position, shipDirection);
-
-        //public override void AddThreeDeckShip(Position position, Directions shipDirection) => BuildShip(3, position, shipDirection);
-
-        //public override void AddTwoDeckShip(Position position, Directions shipDirection) => BuildShip(2, position, shipDirection);
-
-        //public override void AddOneDeckShip(Position position, Directions shipDirection) => BuildShip(1, position, shipDirection);
-
         public override IBoard CreateBoard()
         {
-            //creating board
-            for(int i = 1; i < 5; i++)
+            Random rnd = new Random();
+            int x = rnd.Next(_board.Size);
+            int y = rnd.Next(_board.Size);
+            var enums = Enum.GetValues(typeof(Directions));
+            Directions direction = (Directions)enums.GetValue(rnd.Next(enums.Length));
+
+            for (int i = 1; i < 5; i++)
             {
                 for (int j = 0; j < 5 - i; j++)
-                    //BuildShip(i, position, shipDirection);
-                    ;
+                {
+                    IShip ship = Ship.New(i, Cell.New(Position.New(x, y)), direction);
+                    while (!_board.IsShipFit(ship)){
+                        x = rnd.Next(_board.Size);
+                        y = rnd.Next(_board.Size);
+                        direction = (Directions)enums.GetValue(rnd.Next(enums.Length));
+                        ship = Ship.New(i, Cell.New(Position.New(x, y)), direction);
+                    }
+                    BuildShip(i, Position.New(x, y), direction);
+                }
             }
             return _board;
         }

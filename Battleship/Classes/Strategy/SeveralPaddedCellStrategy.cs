@@ -5,8 +5,11 @@ namespace Battleship.Classes.Strategy
 {
     class SeveralPaddedCellStrategy : IStrikeStrategy
     {
-        public void StrikeCell(IBoard board, params ICell[] cells)
+        public void StrikeCell(IPlayer player, IBoard board, params ICell[] cells)
         {
+
+            Bot bot = (Bot)player;
+            bot.ChangeStrategy(new NoPaddedCellStrategy());
 
         }
     }
