@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace Battleship.Classes.Strategy
 {
-    class OnePaddedCellStrategy : IStrikeStrategy
+    class OnePaddedCellStrategy : IBotStrikeStrategy
     {
-        public void StrikeCell(IPlayer player, IBoard board, params ICell[] cells)
+        public void StrikeCell(IBoard board)
         {
             List<ICell> cellsOnFire = board.GetCellsOnFire();
             var random = new Random();
@@ -30,8 +30,6 @@ namespace Battleship.Classes.Strategy
                     board.HitTheCell(board.FindCell(Position.New(cellToHit.Position.X, cellToHit.Position.Y + 1)));
                     break;
             }
-            Bot bot = (Bot)player;
-            bot.ChangeStrategy(new SeveralPaddedCellStrategy());
         }
     }
 }

@@ -4,9 +4,9 @@ using SeaBattle.Enums;
 using System;
 namespace Battleship.Classes.Strategy
 {
-    class NoPaddedCellStrategy : IStrikeStrategy
+    class NoPaddedCellStrategy : IBotStrikeStrategy
     {
-        public void StrikeCell(IPlayer player, IBoard board, params ICell[] cells)
+        public void StrikeCell(IBoard board)
         {
             Random rnd = new Random();
             int x = rnd.Next(board.Size);
@@ -20,9 +20,6 @@ namespace Battleship.Classes.Strategy
             }
             board.HitTheCell(cellToHit);
 
-            //change strategy only if shoot the ship!
-            //Bot bot = (Bot)player;
-            //bot.ChangeStrategy(new OnePaddedCellStrategy());
         }
     }
 }

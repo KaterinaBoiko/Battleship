@@ -3,13 +3,10 @@ using System;
 
 namespace Battleship.Classes.Strategy
 {
-    class SeveralPaddedCellStrategy : IStrikeStrategy
+    class SeveralPaddedCellStrategy : IBotStrikeStrategy
     {
-        public void StrikeCell(IPlayer player, IBoard board, params ICell[] cells)
+        public void StrikeCell(IBoard board)
         {
-
-            Bot bot = (Bot)player;
-            bot.ChangeStrategy(new NoPaddedCellStrategy());
 
         }
     }

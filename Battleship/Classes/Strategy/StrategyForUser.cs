@@ -6,15 +6,15 @@ using System.Collections.Generic;
 
 namespace Battleship.Classes.Strategy
 {
-    class StrategyForUser : IStrikeStrategy
+    public class StrategyForUser
     {
-        public void StrikeCell(IPlayer player, IBoard board, params ICell[] cells)
+        public void StrikeCell(IBoard board, ICell cell)
         {
-            ICell cellToShot = board.FindCell(Position.New(cells[0].Position.X, cells[0].Position.Y));
+            ICell cellToShot = board.FindCell(Position.New(cell.Position.X, cell.Position.Y));
             if (cellToShot.State == State.OnFire || cellToShot.State == State.Checked)
                 throw new Exception("You have already checked this cell.");
 
-            board.HitTheCell(cells[0]);
+            board.HitTheCell(cell);
         }
     }
 }

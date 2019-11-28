@@ -102,13 +102,11 @@ namespace Battleship.Classes
             else yStart = ship.FirstCell.Position.Y - 1;
 
             if (ship.FirstCell.Position.X + ship.DeckNumber > Size && ship.Direction.Equals(Directions.Horizontally))
-                //throw new InvalidOperationException($"Board is too small; {Size}");
                 return false;
             else if (ship.FirstCell.Position.X + ship.DeckNumber == Size) xEnd = 9;
             else xEnd = ship.FirstCell.Position.X + ship.DeckNumber;
 
             if (ship.FirstCell.Position.Y + ship.DeckNumber > Size && ship.Direction.Equals(Directions.Vertically))
-                //throw new InvalidOperationException($"Board is too small; {Size}");
                 return false;
             else if (ship.FirstCell.Position.Y + ship.DeckNumber == Size) yEnd = 9;
             else yEnd = ship.FirstCell.Position.Y + ship.DeckNumber;
@@ -139,6 +137,13 @@ namespace Battleship.Classes
                 }
             }
             return true;
+        }
+        public bool Lose()
+        {
+            if (SunkenCells == 20)
+                return true;
+            else
+                return false;
         }
     }
 }

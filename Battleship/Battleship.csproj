@@ -45,11 +45,9 @@
   <ItemGroup>
     <Compile Include="Abstracts\BoardBuilder.cs" />
     <Compile Include="Classes\Board.cs" />
-    <Compile Include="Classes\Bot.cs" />
     <Compile Include="Classes\DefaultBuilder.cs" />
     <Compile Include="Classes\Cell.cs" />
     <Compile Include="Classes\Game.cs" />
-    <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\Ship.cs" />
     <Compile Include="Classes\Strategy\NoPaddedCellStrategy.cs" />
     <Compile Include="Classes\Strategy\OnePaddedCellStrategy.cs" />
@@ -59,11 +57,10 @@
     <Compile Include="Enums\ShootingStrategy.cs" />
     <Compile Include="Interfaces\IBoard.cs" />
     <Compile Include="Enums\InternalCellState.cs" />
-    <Compile Include="Interfaces\IStrikeStrategy.cs" />
+    <Compile Include="Interfaces\IBotStrikeStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Values\Position.cs" />
     <Compile Include="Interfaces\ICell.cs" />
-    <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IShip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -20,9 +20,7 @@ namespace Battleship
             Console.WriteLine("Hello, it`s Battleship!");
             BoardBuilder userBuilder = new DefaultBuilder();
             BoardBuilder botBuilder = new DefaultBuilder();
-            IPlayer player = new User(userBuilder);
-            IPlayer bot = new Bot(botBuilder);
-            Game CurrentGame = Game.getInstance(player, bot);
+            Game CurrentGame = Game.getInstance(userBuilder, botBuilder);
             while (true)
             {
                 if (consoleY > 27)
@@ -30,7 +28,7 @@ namespace Battleship
                     consoleY = 3;
                     Console.Clear();
                 }
-                DrawBoards(player.Board, bot.Board);
+                DrawBoards(Game.UserBoard, Game.BotBoard);
                 Console.SetCursorPosition(30, consoleY);
                 Console.Write("Your shot: ");
                 try
@@ -39,9 +37,14 @@ namespace Battleship
                         .Split(new char[] { ' ', ',', ':' }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(i => int.Parse(i))
                         .ToArray();
-                    player.Strike(bot.Board, Cell.New(Position.New(shotCoordinates[0], shotCoordinates[1])));
+                    Game.UserStrategy.StrikeCell(Game.BotBoard, Cell.New(Position.New(shotCoordinates[0], shotCoordinates[1])));
                 }
                 catch (FormatException)
+                {
+                    Console.SetCursorPosition(30, consoleY);
+                    Console.Write("Incorrect input");
+                }
+                catch (IndexOutOfRangeException)
                 {
                     Console.SetCursorPosition(30, consoleY);
                     Console.Write("Incorrect input");
@@ -53,15 +56,15 @@ namespace Battleship
                 }
 
                 consoleY++;
-                if (player.Lose())
+                if (Game.UserBoard.Lose())
                 {
                     Console.Clear();
                     Console.SetCursorPosition(30, consoleY);
                     Console.Write("You lose =(");
                     break;
                 }
-                bot.Strike(player.Board);
-                if (bot.Lose())
+                Game.BotStrategy.StrikeCell(Game.UserBoard);
+                if (Game.BotBoard.Lose())
                 {
                     Console.Clear();
                     Console.SetCursorPosition(30, consoleY);

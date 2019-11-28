@@ -15,6 +15,7 @@ namespace Battleship.Interfaces
         bool IsShipFit(IShip ship);
         ICell FindCell(Position position);
         List<ICell> GetCellsOnFire();
+        bool Lose();
         IEnumerable<ICell> GetCellsInDirection(ICell startCell, int numberOfCells, Directions directions);
     }
 }
